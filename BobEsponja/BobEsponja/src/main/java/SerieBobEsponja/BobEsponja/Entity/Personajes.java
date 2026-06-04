@@ -1,11 +1,11 @@
 package SerieBobEsponja.BobEsponja.Entity;
 
 public class Personajes {
-    protected  int id;
+    protected  Long  id;
     protected String nombre,apellido,especies,rol;
     protected  int edad ;
 
-    public Personajes(int id, String nombre, String apellido, String especies, String rol, int edad) {
+    public Personajes(Long id, String nombre, String apellido, String especies, String rol, int edad) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -14,11 +14,11 @@ public class Personajes {
         this.edad = edad;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,6 +60,18 @@ public class Personajes {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    @Override
+    public String toString() {
+        return "Personajes{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", especies='" + especies + '\'' +
+                ", rol='" + rol + '\'' +
+                ", edad=" + edad +
+                '}';
     }
 }
 
