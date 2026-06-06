@@ -1,11 +1,11 @@
-package SerieBobEsponja.BobEsponja.Entity;
+package SerieBobEsponja.BobEsponja.Personaje;
 
-public class Personajes {
+public class Personaje {
     protected  Long  id;
     protected String nombre,apellido,especies,rol;
     protected  int edad ;
 
-    public Personajes(Long id, String nombre, String apellido, String especies, String rol, int edad) {
+    public Personaje(Long id, String nombre, String apellido, String especies, String rol, int edad) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -64,7 +64,7 @@ public class Personajes {
 
     @Override
     public String toString() {
-        return "Personajes{" +
+        return "Personaje{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +

@@ -1,10 +1,8 @@
-package SerieBobEsponja.BobEsponja.controllers.ApiRest;
+package SerieBobEsponja.BobEsponja.Personaje;
 
-import SerieBobEsponja.BobEsponja.Entity.Personajes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 //Utilizemos anotaciones para poder especificarle a sprigboot u haga algo esa anoacion esta vinculado
@@ -12,11 +10,11 @@ import java.util.*;
 // esta classe ya es para poder transformarlo en el json no
 @RestController
 public class RESTPersonajesController {
-   static  List<Personajes>  llista = new ArrayList<>();
+   static  List<Personaje>  llista = new ArrayList<>();
     static{
         //Es para conversar a Long
-        llista.add(new Personajes(1L,"PepeElmago","Hey","Pez","Villano",1));
-        llista.add(new Personajes(2L,"Pepezao","ey","ez","Random",2));
+        llista.add(new Personaje(1L,"PepeElmago","Hey","Pez","Villano",1));
+        llista.add(new Personaje(2L,"Pepezao","ey","ez","Random",2));
 
     }
 @GetMapping("/")
@@ -25,14 +23,14 @@ public class RESTPersonajesController {
     }
     //Obtene todos los personajes
     @GetMapping("/personajes")
-    public List<Personajes> getAllpersonajes(){
+    public List<Personaje> getAllpersonajes(){
         return llista;
     }
     //Obtener por id
    @GetMapping("/personajes/{id}")
-    public Personajes  getPersonaje(@PathVariable Long id ){
+    public Personaje getPersonaje(@PathVariable Long id ){
 
-        Personajes p = getPersonajeList(id);
+        Personaje p = getPersonajeList(id);
        if (p == null) {
            // Esto corta la ejecución y devuelve un error 404 al navegador
            //throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Personaje no encontrado con ID: " + id);
@@ -42,7 +40,7 @@ public class RESTPersonajesController {
 
        return p;
     }
-    private Personajes getPersonajeList(Long id ){
+    private Personaje getPersonajeList(Long id ){
         return llista.stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst()
