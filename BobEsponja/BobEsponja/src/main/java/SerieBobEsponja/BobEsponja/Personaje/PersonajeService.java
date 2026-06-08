@@ -1,0 +1,15 @@
+package SerieBobEsponja.BobEsponja.Personaje;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+@Service
+public class PersonajeService {
+    @Autowired
+    PersonajeRepository pr;
+    public List<PersonajeEntity> getAll() {
+        return pr.findAll();
+    }
+
+}

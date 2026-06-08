@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "SerieBobEsponja.BobEsponja"
+        basePackages = "SerieBobEsponja.BobEsponja" //EN que classes se aplican pundre a todos
 )
 public class Mysqlconfig {
     @Bean
