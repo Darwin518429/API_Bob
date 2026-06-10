@@ -1,7 +1,7 @@
-package SerieBobEsponja.BobEsponja.Personaje;
+package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
 import jakarta.persistence.*;
-
+//El nombre de las propiedades debe de ser igual que el nombre de las columanas de la bd
 @Entity
 @Table(name = "personajes")
 public class PersonajeEntity {

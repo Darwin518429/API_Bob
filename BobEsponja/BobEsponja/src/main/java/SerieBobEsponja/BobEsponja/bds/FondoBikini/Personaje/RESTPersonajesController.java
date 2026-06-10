@@ -1,4 +1,4 @@
-package SerieBobEsponja.BobEsponja.Personaje;
+package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,19 +35,13 @@ public class RESTPersonajesController {
 
         PersonajeEntity p = getPersonajeList(id);
        if (p == null) {
-           // Esto corta la ejecución y devuelve un error 404 al navegador
-           //throw new ResponseStatusException(HttpStatus.NOT_FOUND, "PersonajeEntity no encontrado con ID: " + id);
-          // throw new ResponseStatusException(HttpStatus.NOT_FOUND, "MENSAJE_DE_PRUEBA_123");
        throw new PersonajeNotFoundException(id);
        }
 
        return p;
     }
     private PersonajeEntity getPersonajeList(Long id ){
-        return llista.stream()
-                .filter(p -> p.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+        return service.getId(id);
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)

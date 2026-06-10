@@ -1,4 +1,4 @@
-package SerieBobEsponja.BobEsponja.Personaje;
+package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,5 +11,7 @@ public class PersonajeService {
     public List<PersonajeEntity> getAll() {
         return pr.findAll();
     }
-
+public PersonajeEntity getId(Long id ){
+        return pr.findByid(id);
+}
 }
