@@ -12,6 +12,11 @@ public class PersonajeService {
         return pr.findAll();
     }
 public PersonajeEntity getId(Long id ){
+
         return pr.findByid(id);
+}
+public void deleteId(Long id ){
+
+        pr.deleteById(id);
 }
 }

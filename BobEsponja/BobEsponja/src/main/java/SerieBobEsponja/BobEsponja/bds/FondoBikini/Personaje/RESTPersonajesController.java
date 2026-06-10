@@ -13,13 +13,6 @@ import java.util.*;
 public class RESTPersonajesController {
     @Autowired
     PersonajeService service;
-   static  List<PersonajeEntity>  llista = new ArrayList<>();
-    static{
-        //Es para conversar a Long
-        /*llista.add(new PersonajeEntity(1L,"PepeElmago","Hey","Pez","Villano",1));
-        llista.add(new PersonajeEntity(2L,"Pepezao","ey","ez","Random",2));*/
-
-    }
 @GetMapping("/")
     public String  prueba (){
         return "Hola mundo!";
@@ -33,7 +26,7 @@ public class RESTPersonajesController {
    @GetMapping("/personajes/{id}")
     public PersonajeEntity getPersonaje(@PathVariable Long id ){
 
-        PersonajeEntity p = getPersonajeList(id);
+        PersonajeEntity p =service.getId(id) /* getPersonajeList(id)*/;
        if (p == null) {
        throw new PersonajeNotFoundException(id);
        }
@@ -44,6 +37,12 @@ public class RESTPersonajesController {
         return service.getId(id);
     }
 
+    @DeleteMapping("/personajes/{id}")
+    public String deletePersonaje(@PathVariable Long id){
+       service.deleteId(id);
+        if(service.getId(id) == null) return "Elimininado correctmente";
+        else return "Error algo a pasado ";
+    }
     @ResponseStatus(HttpStatus.NOT_FOUND)
     private  class PersonajeNotFoundException extends RuntimeException {
         public PersonajeNotFoundException(Long id) {
