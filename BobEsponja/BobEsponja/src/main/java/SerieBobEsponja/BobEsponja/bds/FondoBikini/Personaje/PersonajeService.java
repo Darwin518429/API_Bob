@@ -7,16 +7,24 @@ import java.util.List;
 @Service
 public class PersonajeService {
     @Autowired
-    PersonajeRepository pr;
+    PersonajeRepository repo;
     public List<PersonajeEntity> getAll() {
-        return pr.findAll();
+        return repo.findAll();
     }
 public PersonajeEntity getId(Long id ){
 
-        return pr.findByid(id);
+        return repo.findByid(id);
 }
 public void deleteId(Long id ){
-
-        pr.deleteById(id);
+        repo.deleteById(id);
 }
+
+public PersonajeEntity add(PersonajeEntity p ){
+return repo.save(p);
+}
+
+    public PersonajeEntity update(Long id, PersonajeEntity p) {
+        p.setId(id);        // ← Poner id que se quiere modificar
+        return repo.save(p); // ← UPDATE porque tiene id
+    }
 }

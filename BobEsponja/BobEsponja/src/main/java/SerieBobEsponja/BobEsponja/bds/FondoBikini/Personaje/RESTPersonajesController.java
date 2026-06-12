@@ -43,6 +43,17 @@ public class RESTPersonajesController {
         if(service.getId(id) == null) return "Elimininado correctmente";
         else return "Error algo a pasado ";
     }
+//Añadir
+    @PostMapping("/personajes")
+    public PersonajeEntity create(@RequestBody PersonajeEntity p) { // Con requestBody agarr el josn manddo y lo transforma en un bojeto de java
+        return service.add(p);
+    }
+
+    @PutMapping("/personajes/{id}")
+    public PersonajeEntity update(@PathVariable Long id, @RequestBody PersonajeEntity p) {
+        return service.update(id, p);
+    }
+
     @ResponseStatus(HttpStatus.NOT_FOUND)
     private  class PersonajeNotFoundException extends RuntimeException {
         public PersonajeNotFoundException(Long id) {
