@@ -24,20 +24,17 @@ public class RESTPersonajesController {
     //Obtener  los personajes
     @GetMapping("/personajes")
     public Map<String, Object> getAll(
-            //@RequestParam coge los parámetros que van en la URL después del ?:
+            //@RequestParam coge los parámetros que van en la URL después del ?: x?page=num
             @RequestParam(defaultValue = PAGINA_ACTUAL) int page // Valor por defecto de la pagin
             /*@RequestParam(defaultValue = NUM_ELEMENTOS) int size*/) { // Valor por defecto del tamaño
         return service.getAll(page, NUM_ELEMENTOS);
 
     }
     //Obtener por id
-   @GetMapping("/personajes/{id}")
+   @GetMapping("/personajes/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
     public PersonajeEntity getPersonaje(@PathVariable Long id ){
 
-        PersonajeEntity p =service.getId(id) /* getPersonajeList(id)*/;
-       if (p == null) {
-       throw new PersonajeNotFoundException(id);
-       }
+        PersonajeEntity p =service.getId(id);
 
        return p;
     }
@@ -62,19 +59,4 @@ public class RESTPersonajesController {
         return service.update(id, p);
     }
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    private  class PersonajeNotFoundException extends RuntimeException {
-        public PersonajeNotFoundException(Long id) {
-            super("No se encontró ningún personaje con la ID: " + id);
-        }
-    }
-
-    @ControllerAdvice
-    public class GlobalExceptionHandler {
-
-        @ExceptionHandler(PersonajeNotFoundException.class)
-        public ResponseEntity<String> handlePersonajeNotFound(PersonajeNotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-        }
-    }
 }

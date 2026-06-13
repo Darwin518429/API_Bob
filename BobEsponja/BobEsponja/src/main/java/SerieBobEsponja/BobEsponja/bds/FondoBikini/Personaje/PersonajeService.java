@@ -1,5 +1,6 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
+import SerieBobEsponja.BobEsponja.Exception.PersonajeNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,9 +16,8 @@ public class PersonajeService {
     public List<PersonajeEntity> getAll() {
         return repo.findAll();
     }
-public PersonajeEntity getId(Long id ){
-    return repo.findById(id).orElse(null);  // si no existe devuelve null
-       // return repo.findById(id);
+public PersonajeEntity getId(Long id ){ return repo.findById(id)
+        .orElseThrow(() -> new PersonajeNotFound(id));
 }
 public void deleteId(Long id ){
         repo.deleteById(id);
