@@ -1,6 +1,7 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,16 +12,19 @@ import java.util.*;
 // esta classe ya es para poder transformarlo en el json no
 @RestController
 public class RESTPersonajesController {
-    @Autowired
+    @Autowired // Me crea el objeto sin tener que hace un constructor
     PersonajeService service;
 @GetMapping("/")
     public String  prueba (){
         return "Hola mundo!";
     }
-    //Obtene todos los personajes
+    //Obtene  los personajes
+
     @GetMapping("/personajes")
-    public List<PersonajeEntity> getAllpersonajes(){
-        return service.getAll();
+    public Map<String, Object> getAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+        return service.getAll(page, size);
     }
     //Obtener por id
    @GetMapping("/personajes/{id}")
