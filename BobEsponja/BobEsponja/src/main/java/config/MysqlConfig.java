@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(//ESTA ANOTACION NOS SIRVE PARA PODER ESPCIFICAR  QUE CLASES PUEDEN ABIRR CONEXION CON LA BD
         basePackages = "SerieBobEsponja.BobEsponja.bds.FondoBikini" //EN que classes se aplican pundre a todos
 )
-public class Mysqlconfig {
+public class MysqlConfig {
     @Bean // Nos creara un objeto Myqlconfig con las creenciales
     @Primary //Esto se le especifica que estra seta como la bd por defecto(Agarra las credneciales de las bds)
     @ConfigurationProperties("spring.datasource") // En el propertie agarra los valores que tengan spring.datsource

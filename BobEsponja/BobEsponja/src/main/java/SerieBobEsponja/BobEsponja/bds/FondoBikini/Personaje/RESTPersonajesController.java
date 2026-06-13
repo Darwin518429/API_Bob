@@ -12,19 +12,23 @@ import java.util.*;
 // esta classe ya es para poder transformarlo en el json no
 @RestController
 public class RESTPersonajesController {
+    final String  PAGINA_ACTUAL ="1";
+    final int  NUM_ELEMENTOS=  5;
     @Autowired // Me crea el objeto sin tener que hace un constructor
     PersonajeService service;
 @GetMapping("/")
     public String  prueba (){
         return "Hola mundo!";
     }
-    //Obtene  los personajes
 
+    //Obtener  los personajes
     @GetMapping("/personajes")
     public Map<String, Object> getAll(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size) {
-        return service.getAll(page, size);
+            //@RequestParam coge los parámetros que van en la URL después del ?:
+            @RequestParam(defaultValue = PAGINA_ACTUAL) int page // Valor por defecto de la pagin
+            /*@RequestParam(defaultValue = NUM_ELEMENTOS) int size*/) { // Valor por defecto del tamaño
+        return service.getAll(page, NUM_ELEMENTOS);
+
     }
     //Obtener por id
    @GetMapping("/personajes/{id}")

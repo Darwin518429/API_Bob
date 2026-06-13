@@ -27,7 +27,8 @@ public PersonajeEntity add(PersonajeEntity p ){
 return repo.save(p);
 }
     public Map<String, Object> getAll(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1 , size); //Pongo -1 para que empieze ne uno
+      //  if (size > 10) size = 10;  Limite en caso de que se peude modifica el num elementos
         Page<PersonajeEntity> resultado = repo.findAll(pageable);
         //Creare un objeto primero para que represente una partado en el json osea:
         /*
@@ -36,12 +37,13 @@ return repo.save(p);
         * }
         * */
         Map<String, Object> info = new LinkedHashMap<>();
-        info.put("paginaActual", resultado.getNumber());     // página actual
+        info.put("paginaActual", resultado.getNumber() + 1)  ;     // pagina actual
         info.put("totalPaginas", resultado.getTotalPages()); // total paginas
         info.put("totalElementos", resultado.getTotalElements()); // total registros
 
         Map<String, Object> response = new LinkedHashMap<>();
-        response.put("Info", new ArrayList<Object>());
+
+        response.put("Info",info);
         response.put("personajes", resultado.getContent());      // los  elementos/datos
 
         return response;
