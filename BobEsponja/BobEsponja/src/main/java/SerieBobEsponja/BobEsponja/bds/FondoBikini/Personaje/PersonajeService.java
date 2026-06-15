@@ -39,7 +39,7 @@ return repo.save(p);
         if(size <= 0 ) throw  new GetSizePersonajeException(ErrorMensajes.PersonajeEleemnt);
         Pageable pageable = PageRequest.of(page - 1 , size); // Pongo -1 para que empieze en uno
       //  if (size > 10) size = 10;  Limite en caso de que se peude modifica el num elementos
-        Page<PersonajeEntity> resultado = repo.findAll(pageable);
+        Page<PersonajeEntity> resultado = repo.findAllByOrderByNombreDesc(pageable);
         //Creare un objeto primero para que represente una partado en el json osea:
         /*
         * info:{
