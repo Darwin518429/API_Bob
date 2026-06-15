@@ -5,7 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+// No deajar  hacer esto:
+// http://localhost:8080/personajes?page=1&size=1
 import java.util.*;
 //Utilizemos anotaciones para poder especificarle a sprigboot u haga algo esa anoacion esta vinculado
 //A un codigo que hace algo
@@ -49,11 +50,14 @@ public class RESTPersonajesController {
         else return "Error algo a pasado ";
     }
 //Añadir
+// @RequestBody agarra el JSON del body de la petición HTTP
+// y lo convierte automáticamente a un objeto Java
     @PostMapping("/personajes")
     public PersonajeEntity create(@RequestBody PersonajeEntity p) { // Con requestBody agarr el josn manddo y lo transforma en un bojeto de java
         return service.add(p);
     }
 
+//Actualizar
     @PutMapping("/personajes/{id}")
     public PersonajeEntity update(@PathVariable Long id, @RequestBody PersonajeEntity p) {
         return service.update(id, p);

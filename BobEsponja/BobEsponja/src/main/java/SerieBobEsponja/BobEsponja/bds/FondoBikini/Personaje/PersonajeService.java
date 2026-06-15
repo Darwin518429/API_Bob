@@ -1,6 +1,6 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
-import SerieBobEsponja.BobEsponja.Exception.PersonajeNotFound;
+import SerieBobEsponja.BobEsponja.Exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,18 +16,28 @@ public class PersonajeService {
     public List<PersonajeEntity> getAll() {
         return repo.findAll();
     }
-public PersonajeEntity getId(Long id ){ return repo.findById(id)
-        .orElseThrow(() -> new PersonajeNotFound(id));
+public PersonajeEntity getId(Long id ){
+        if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
+
+        return repo.findById(id)
+        .orElseThrow(() -> new PersonajeNotFoundException(ErrorMensajes.PersonajeNotFound));
 }
 public void deleteId(Long id ){
-        repo.deleteById(id);
+    if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
+    repo.deleteById(id);
 }
-
+//Hare pequeñas comprovaciones
 public PersonajeEntity add(PersonajeEntity p ){
+    if(p.getNombre().length() < 4 || p.getEspecie().length() < 2  ) throw new AddPersonajeException(ErrorMensajes.PersonajeAddException);
+
 return repo.save(p);
 }
-    public Map<String, Object> getAll(int page, int size) {
-        Pageable pageable = PageRequest.of(page - 1 , size); //Pongo -1 para que empieze ne uno
+
+
+    public Map<String, Object> getAll(int page, int size)  {
+        if(page <= 0 ) throw new GetPagePersonajeException(ErrorMensajes.PersonajePage);
+        if(size <= 0 ) throw  new GetSizePersonajeException(ErrorMensajes.PersonajeEleemnt);
+        Pageable pageable = PageRequest.of(page - 1 , size); // Pongo -1 para que empieze en uno
       //  if (size > 10) size = 10;  Limite en caso de que se peude modifica el num elementos
         Page<PersonajeEntity> resultado = repo.findAll(pageable);
         //Creare un objeto primero para que represente una partado en el json osea:
@@ -50,7 +60,9 @@ return repo.save(p);
     }
 
     public PersonajeEntity update(Long id, PersonajeEntity p) {
-        p.setId(id);        //  Poner id que se quiere modificar
-        return repo.save(p); //  UPDATE porque tiene id
+        if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
+        if(repo.findById(id).isEmpty()) throw new AddPersonajeException(ErrorMensajes.PersonajeNotFound);
+        p.setId(id);        //  Vamos a reemplazar todos los cambios del personaje actual
+        return repo.save(p); // Hara  UPDATE porque detectara el objeto que tendra una id (Si tiene id actualizara)
     }
 }
