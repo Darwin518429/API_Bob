@@ -32,20 +32,22 @@ public PersonajeEntity add(PersonajeEntity p ){
 
 return repo.save(p);
 }
-
+    public List<PersonajeEntity> getPersonajeOcupacion(String Ocupacion ){
+        if(Ocupacion.isBlank()) throw new StringInvalidException(ErrorMensajes.InvalidString);
+        return repo.findByOcupacionOrderByNombreAsc(Ocupacion);
+    };
 
     public Map<String, Object> getAll(int page, int size)  {
         if(page <= 0 ) throw new GetPagePersonajeException(ErrorMensajes.PersonajePage);
         if(size <= 0 ) throw  new GetSizePersonajeException(ErrorMensajes.PersonajeEleemnt);
         Pageable pageable = PageRequest.of(page - 1 , size); // Pongo -1 para que empieze en uno
-      //  if (size > 10) size = 10;  Limite en caso de que se peude modifica el num elementos
-        Page<PersonajeEntity> resultado = repo.findAllByOrderByNombreDesc(pageable);
+        Page<PersonajeEntity> resultado = repo.findAllByOrderByIdAsc(pageable);
         //Creare un objeto primero para que represente una partado en el json osea:
         /*
-        * info:{
-        * Numero pagina...
-        * }
-        * */
+         * info:{
+         * Numero pagina...
+         * }
+         * */
         Map<String, Object> info = new LinkedHashMap<>();
         info.put("paginaActual", resultado.getNumber() + 1)  ;     // pagina actual
         info.put("totalPaginas", resultado.getTotalPages()); // total paginas

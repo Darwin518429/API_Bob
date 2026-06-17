@@ -21,9 +21,10 @@ PersonajeEntity findByid(Long id);
 
 //Consutlas personalizadas
 // En el Repository
-Page<PersonajeEntity> findAllByOrderByNombreDesc(Pageable pageable);
+Page<PersonajeEntity> findAllByOrderByIdAsc(Pageable pageable);
     List<PersonajeEntity> findByNombreContainingOrderByNombreAsc(String nombre); // Buscar si continene caracteres especificos
-   List<PersonajeEntity> findByEspecieOrderByNombreAsc(String Especie); // Buscar  por especie
+   //List<PersonajeEntity> findByEspecieOrderByNombreAsc(String Especie); // Buscar  por especie
+    List<PersonajeEntity> findByOcupacionOrderByNombreAsc(String Ocupacion);
 
 
 }

@@ -1,5 +1,7 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
+import SerieBobEsponja.BobEsponja.Exception.ErrorMensajes;
+import SerieBobEsponja.BobEsponja.Exception.StringInvalidException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -13,7 +15,7 @@ import java.util.*;
 // esta classe ya es para poder transformarlo en el json no
 @RestController
 public class RESTPersonajesController {
-    final String  PAGINA_ACTUAL ="1";
+    final String  PAGINA_ACTUAL ="1"; //Pagina por defecto
     final int  NUM_ELEMENTOS=  5;
     @Autowired // Me crea el objeto sin tener que hace un constructor
     PersonajeService service;
@@ -31,6 +33,12 @@ public class RESTPersonajesController {
         return service.getAll(page, NUM_ELEMENTOS);
 
     }
+
+    @GetMapping("/personajes/ocupacion/{Ocupacion}")
+    public List<PersonajeEntity> getPersonaOcupacion(@PathVariable String Ocupacion ){
+
+        return service.getPersonajeOcupacion(Ocupacion);
+    };
     //Obtener por id
    @GetMapping("/personajes/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
     public PersonajeEntity getPersonaje(@PathVariable Long id ){

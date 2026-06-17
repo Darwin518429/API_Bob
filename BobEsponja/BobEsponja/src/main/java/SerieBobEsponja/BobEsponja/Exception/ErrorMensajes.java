@@ -11,4 +11,6 @@ public class ErrorMensajes {
     final public static String PersonajeEleemnt = "El numero de elemntos no puede ser menor que 0 ";
     final public static String InvalidId = "Id invalido menor a 0";
 
+    final public static String InvalidString = "TEXTO VACIO O CON EL FORMATO NO ADECUADO";
+
 }
