@@ -13,4 +13,7 @@ public class ErrorMensajes {
 
     final public static String InvalidString = "TEXTO VACIO O CON EL FORMATO NO ADECUADO";
 
+
+    //MENSAJES  error peticion http
+    final public static String RequestException = "Error Demasiadas excepciones";
 }

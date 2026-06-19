@@ -1,11 +1,7 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
-import SerieBobEsponja.BobEsponja.Exception.ErrorMensajes;
-import SerieBobEsponja.BobEsponja.Exception.StringInvalidException;
+import SerieBobEsponja.BobEsponja.Config.PagConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 // No deajar  hacer esto:
 // http://localhost:8080/personajes?page=1&size=1
@@ -28,9 +24,9 @@ public class RESTPersonajesController {
     @GetMapping("/personajes")
     public Map<String, Object> getAll(
             //@RequestParam coge los parámetros que van en la URL después del ?: x?page=num
-            @RequestParam(defaultValue = PAGINA_ACTUAL) int page // Valor por defecto de la pagin
+            @RequestParam(defaultValue = PagConfig.PAGINA_DEFECTO) int page // Valor por defecto de la pagina le podemos un nombre deb se rexacto al querer obtenr en el navegaodr
             /*@RequestParam(defaultValue = NUM_ELEMENTOS) int size*/) { // Valor por defecto del tamaño
-        return service.getAll(page, NUM_ELEMENTOS);
+        return service.getAll(page, PagConfig.TAMANO_DEFECTO);
 
     }
 

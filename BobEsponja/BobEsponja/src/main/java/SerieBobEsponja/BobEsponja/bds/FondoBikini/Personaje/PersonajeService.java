@@ -13,9 +13,9 @@ import java.util.*;
 public class PersonajeService {
     @Autowired
     PersonajeRepository repo;
-    public List<PersonajeEntity> getAll() {
+   /* public List<PersonajeEntity> getAll() {
         return repo.findAll();
-    }
+    }*/
 public PersonajeEntity getId(Long id ){
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
 

@@ -50,4 +50,14 @@ public class GlobalExceptionHandler {
                 status(HttpStatus.NOT_FOUND) //Codigo http de  error quer mandara
                 .body(e.getMessage()); // Mensaje del error
     }
+
+
+
+
+    @ExceptionHandler(RequestException.class)
+    public ResponseEntity<String> handleRequestException(RequestException e ) {
+        return ResponseEntity.
+                status(HttpStatus.NOT_FOUND) //Codigo http de  error quer mandara
+                .body(e.getMessage()); // Mensaje del error
+    }
 }
