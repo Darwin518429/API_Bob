@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
+//CLASSE QUE LIMITE LAS PETICIONES HTTP
 @Component
 public class RateLimitFilter extends OncePerRequestFilter {
 private int limite = 10;

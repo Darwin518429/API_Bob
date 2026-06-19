@@ -1,5 +1,6 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
+import SerieBobEsponja.BobEsponja.Config.ApiRoutes;
 import SerieBobEsponja.BobEsponja.Config.PagConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +12,6 @@ import java.util.*;
 // esta classe ya es para poder transformarlo en el json no
 @RestController
 public class RESTPersonajesController {
-    final String  PAGINA_ACTUAL ="1"; //Pagina por defecto
-    final int  NUM_ELEMENTOS=  5;
     @Autowired // Me crea el objeto sin tener que hace un constructor
     PersonajeService service;
 @GetMapping("/")
@@ -21,22 +20,22 @@ public class RESTPersonajesController {
     }
 
     //Obtener  los personajes
-    @GetMapping("/personajes")
+    @GetMapping(ApiRoutes.Personajes)
     public Map<String, Object> getAll(
             //@RequestParam coge los parámetros que van en la URL después del ?: x?page=num
             @RequestParam(defaultValue = PagConfig.PAGINA_DEFECTO) int page // Valor por defecto de la pagina le podemos un nombre deb se rexacto al querer obtenr en el navegaodr
-            /*@RequestParam(defaultValue = NUM_ELEMENTOS) int size*/) { // Valor por defecto del tamaño
+         ) { // Valor por defecto del tamaño
         return service.getAll(page, PagConfig.TAMANO_DEFECTO);
 
     }
 
-    @GetMapping("/personajes/ocupacion/{Ocupacion}")
+    @GetMapping( ApiRoutes.Personajes +"/ocupacion/{Ocupacion}")
     public List<PersonajeEntity> getPersonaOcupacion(@PathVariable String Ocupacion ){
 
         return service.getPersonajeOcupacion(Ocupacion);
     };
     //Obtener por id
-   @GetMapping("/personajes/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
+   @GetMapping( ApiRoutes.Personajes + "/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
     public PersonajeEntity getPersonaje(@PathVariable Long id ){
 
         PersonajeEntity p =service.getId(id);
@@ -47,7 +46,7 @@ public class RESTPersonajesController {
         return service.getId(id);
     }
 
-    @DeleteMapping("/personajes/{id}")
+    @DeleteMapping(ApiRoutes.Personajes + "/{id}")
     public String deletePersonaje(@PathVariable Long id){
        service.deleteId(id);
         if(service.getId(id) == null) return "Elimininado correctmente";
@@ -56,13 +55,13 @@ public class RESTPersonajesController {
 //Añadir
 // @RequestBody agarra el JSON del body de la petición HTTP
 // y lo convierte automáticamente a un objeto Java
-    @PostMapping("/personajes")
+    @PostMapping(ApiRoutes.Personajes)
     public PersonajeEntity create(@RequestBody PersonajeEntity p) { // Con requestBody agarr el josn manddo y lo transforma en un bojeto de java
         return service.add(p);
     }
 
 //Actualizar
-    @PutMapping("/personajes/{id}")
+    @PutMapping( ApiRoutes.Personajes + "/{id}")
     public PersonajeEntity update(@PathVariable Long id, @RequestBody PersonajeEntity p) {
         return service.update(id, p);
     }
