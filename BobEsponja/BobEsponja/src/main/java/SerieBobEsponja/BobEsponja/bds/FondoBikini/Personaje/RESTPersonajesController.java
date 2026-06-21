@@ -38,7 +38,7 @@ public class RESTPersonajesController {
    @GetMapping( ApiRoutes.Personajes + "/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
     public PersonajeEntity getPersonaje(@PathVariable Long id ){
 
-        PersonajeEntity p =service.getId(id);
+        PersonajeEntity p = service.getId(id);
 
        return p;
     }

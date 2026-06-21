@@ -10,7 +10,7 @@ public class PersonajeEntity {
     protected  Long  id;
     protected String nombre, especie, direccion, ocupacion;
     protected  int edad ;
-    public PersonajeEntity() {}
+    public PersonajeEntity() {} //JPA/Hibernate necesita un constructor sin parámetros para poder crear los objetos cuando lee datos de la BD
 
     public PersonajeEntity(Long id, String nombre, String dirrecion, String especies, String rol, int edad) {
         this.id = id;
