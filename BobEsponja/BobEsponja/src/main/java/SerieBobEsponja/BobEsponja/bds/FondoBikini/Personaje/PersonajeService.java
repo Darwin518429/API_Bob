@@ -42,6 +42,7 @@ return repo.save(p);
         if(size <= 0 ) throw  new GetSizePersonajeException(ErrorMensajes.PersonajeEleemnt);
         Pageable pageable = PageRequest.of(page - 1 , size); // Pongo -1 para que empieze en uno
         Page<PersonajeEntity> resultado = repo.findAllByOrderByIdAsc(pageable);
+        if(page >=  resultado.getNumber() + 1) throw new GetPagePersonajeException(ErrorMensajes.PersonajePage);
         //Creare un objeto primero para que represente una partado en el json osea:
         /*
          * info:{
@@ -60,7 +61,7 @@ return repo.save(p);
 
         return response;
     }
-
+//SE DEBE DE REEMPLAZAR POR COMPLETO
     public PersonajeEntity update(Long id, PersonajeEntity p) {
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
         if(repo.findById(id).isEmpty()) throw new AddPersonajeException(ErrorMensajes.PersonajeNotFound);

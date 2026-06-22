@@ -13,7 +13,10 @@ public class ErrorMensajes {
 
     final public static String InvalidString = "TEXTO VACIO O CON EL FORMATO NO ADECUADO";
 
-
+    //Mensajes Restaurante error
+    final public static String RestaurentePage = "Error no se encontro el restaurante";
+final public static String RestauranteId = "Restaurante no encontrado";
+final public static String RestauranteAdd = "NO se ha podido añadir el retaurante";
     //MENSAJES  error peticion http
     final public static String RequestException = "Error Demasiadas excepciones";
 }
