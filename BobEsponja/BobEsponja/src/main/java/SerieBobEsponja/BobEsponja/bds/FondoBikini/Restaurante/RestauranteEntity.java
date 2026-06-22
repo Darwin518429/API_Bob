@@ -3,7 +3,7 @@ package SerieBobEsponja.BobEsponja.bds.FondoBikini.Restaurante;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "resturantes")
+@Table(name = "restaurantes")
 public class RestauranteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
