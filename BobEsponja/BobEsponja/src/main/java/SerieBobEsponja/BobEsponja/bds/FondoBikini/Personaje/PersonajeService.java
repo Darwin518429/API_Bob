@@ -12,7 +12,7 @@ import java.util.*;
 @Service
 public class PersonajeService {
     @Autowired
-    PersonajeRepository repo;
+  private   PersonajeRepository repo;
    /* public List<PersonajeEntity> getAll() {
         return repo.findAll();
     }*/

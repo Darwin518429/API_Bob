@@ -10,7 +10,7 @@ import java.util.*;
 @Service
 public class RestauranteService {
     @Autowired
-    RestauranteRepository RestauranteDao;
+    private RestauranteRepository RestauranteDao;
 
     public List<Map<String, Object>> getPropietarios() {
         List<Object[]> resultado = RestauranteDao.getPropietariosRestaurantes();
