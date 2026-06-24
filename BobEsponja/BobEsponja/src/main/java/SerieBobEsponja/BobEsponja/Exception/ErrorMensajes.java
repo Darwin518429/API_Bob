@@ -7,10 +7,8 @@ public class ErrorMensajes {
             "\n2.La especie deb de ser > 2 letras ";
 
     final public static String PersonajePage = "Numero de pagina  no encontrado ";
-
     final public static String PersonajeEleemnt = "El numero de elemntos no puede ser menor que 0 ";
     final public static String InvalidId = "Id invalido menor a 0";
-
     final public static String InvalidString = "TEXTO VACIO O CON EL FORMATO NO ADECUADO";
 
     //Mensajes Restaurante error
@@ -18,6 +16,14 @@ public class ErrorMensajes {
     final public static String RestauranteId = "Restaurante no encontrado";
     final public static String RestauranteAdd = "NO se ha podido añadir el retaurante";
     final public static String RestauranteSize = "Tamaño no valido";
+
+    //Mensajes Productos
+
+    final public static String ProductoPage = "NO se encuentra pagina";
+    final public static String ProductoId = "Restaurante no encontrado";
+    final public static String ProductoAdd = "NO se ha podido añadir el retaurante";
+    final public static String ProductoSize = "Tamaño no valido";
+
     //MENSAJES  error peticion http
     final public static String RequestException = "Error Demasiadas excepciones";
 }

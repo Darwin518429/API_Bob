@@ -1,12 +1,13 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Producto;
 
 import SerieBobEsponja.BobEsponja.Config.ApiRoutes;
+import SerieBobEsponja.BobEsponja.Config.PagConfig;
+import SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje.PersonajeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class RESTProductoController {
@@ -20,4 +21,40 @@ public class RESTProductoController {
 
 
     //CRUD
+    @GetMapping(ApiRoutes.Productos)
+    public Map<String, Object> getAll(
+            //@RequestParam coge los parámetros que van en la URL después del ?: x?page=num
+            @RequestParam(defaultValue = PagConfig.PAGINA_DEFECTO) int page // Valor por defecto de la pagina le podemos un nombre deb se rexacto al querer obtenr en el navegaodr
+    ) { // Valor por defecto del tamaño
+        return service.getAll(page, PagConfig.TAMANO_DEFECTO);
+
+    }
+
+    @GetMapping( ApiRoutes.Productos + "/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
+    public ProductoEntity getProductod(@PathVariable Long id ){
+
+        ProductoEntity p = service.getId(id);
+
+        return p;
+    }
+
+    @DeleteMapping(ApiRoutes.Productos + "/{id}")
+    public String deleteProductos(@PathVariable Long id){
+        service.deleteId(id);
+        if(service.getId(id) == null) return "Elimininado correctmente";
+        else return "Error algo a pasado ";
+    }
+    //Añadir
+// @RequestBody agarra el JSON del body de la petición HTTP
+// y lo convierte automáticamente a un objeto Java
+    @PostMapping(ApiRoutes.Productos)
+    public ProductoEntity create(@RequestBody ProductoEntity p) { // Con requestBody agarr el josn manddo y lo transforma en un bojeto de java
+        return service.add(p);
+    }
+
+    //Actualizar
+    @PutMapping( ApiRoutes.Productos + "/{id}")
+    public ProductoEntity update(@PathVariable Long id, @RequestBody ProductoEntity p) {
+        return service.update(id, p);
+    }
 }
