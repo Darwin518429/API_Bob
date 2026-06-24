@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -51,8 +52,11 @@ public class GlobalExceptionHandler {
                 .body(e.getMessage()); // Mensaje del error
     }
 
-
-
+//   Si no encunetra un ocntroller ocn el nombre lanzara un mensaje de error
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<String> handleNotFound(NoResourceFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("La ruta solicitada no existe");
+    }
 
     @ExceptionHandler(RequestException.class)
     public ResponseEntity<String> handleRequestException(RequestException e ) {
