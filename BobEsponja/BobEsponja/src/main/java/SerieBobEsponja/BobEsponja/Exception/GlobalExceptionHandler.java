@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 //Aqui es donde manejarsmos  como quieres que meustre el error
-    @ExceptionHandler(PersonajeNotFoundException.class) // Esepcifica con que exepcion ejecutaremos
-    public ResponseEntity<String> handleNotFound(PersonajeNotFoundException e ) {
+    @ExceptionHandler(ElementNotFoundException.class) // Esepcifica con que exepcion ejecutaremos
+    public ResponseEntity<String> handleNotFound(ElementNotFoundException e ) {
         return ResponseEntity.
                 status(HttpStatus.NOT_FOUND) //Codigo http de  error quer mandara
                 .body(e.getMessage()); // Mensaje del error
@@ -22,16 +22,16 @@ public class GlobalExceptionHandler {
                 .body(e.getMessage()); // Mensaje del error
     }
 
-    @ExceptionHandler(GetPagePersonajeException.class)
-    public ResponseEntity<String> handleAPageException(GetPagePersonajeException e ) {
+    @ExceptionHandler(GetPageException.class)
+    public ResponseEntity<String> handleAPageException(GetPageException e ) {
         return ResponseEntity.
                 status(HttpStatus.NOT_FOUND) //Codigo http de  error quer mandara
                 .body(e.getMessage()); // Mensaje del error
     }
 
 
-    @ExceptionHandler(GetSizePersonajeException.class)
-    public ResponseEntity<String> handleAPageException(GetSizePersonajeException e ) {
+    @ExceptionHandler(GetSizeException.class)
+    public ResponseEntity<String> handleAPageException(GetSizeException e ) {
         return ResponseEntity.
                 status(HttpStatus.NOT_FOUND) //Codigo http de  error quer mandara
                 .body(e.getMessage()); // Mensaje del error

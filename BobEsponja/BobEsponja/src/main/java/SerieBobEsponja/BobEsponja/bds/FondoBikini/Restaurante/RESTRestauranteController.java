@@ -39,7 +39,7 @@ RestauranteService service;
     }
 
     @DeleteMapping(ApiRoutes.Restaurantes + "/{id}")
-    public String deletePersonaje(@PathVariable Long id){
+    public String deleteRestaurante(@PathVariable Long id){
         service.deleteId(id);
         if(service.getId(id) == null) return "Elimininado correctmente";
         else return "Error algo a pasado ";

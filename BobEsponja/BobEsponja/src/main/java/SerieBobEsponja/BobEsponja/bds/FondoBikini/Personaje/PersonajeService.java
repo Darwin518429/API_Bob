@@ -20,7 +20,7 @@ public PersonajeEntity getId(Long id ){
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
 
         return repo.findById(id)
-        .orElseThrow(() -> new PersonajeNotFoundException(ErrorMensajes.PersonajeNotFound));
+        .orElseThrow(() -> new ElementNotFoundException(ErrorMensajes.PersonajeNotFound));
 }
 public void deleteId(Long id ){
     if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
@@ -38,11 +38,11 @@ return repo.save(p);
     };
 
     public Map<String, Object> getAll(int page, int size)  {
-        if(page <= 0 ) throw new GetPagePersonajeException(ErrorMensajes.PersonajePage);
-        if(size <= 0 ) throw  new GetSizePersonajeException(ErrorMensajes.PersonajeEleemnt);
+        if(page <= 0 ) throw new GetPageException(ErrorMensajes.PersonajePage);
+        if(size <= 0 ) throw  new GetSizeException(ErrorMensajes.PersonajeEleemnt);
         Pageable pageable = PageRequest.of(page - 1 , size); // Pongo -1 para que empieze en uno
         Page<PersonajeEntity> resultado = repo.findAllByOrderByIdAsc(pageable);
-        if(page >=  resultado.getNumber() + 1) throw new GetPagePersonajeException(ErrorMensajes.PersonajePage);
+        if (resultado.isEmpty()) throw new GetPageException(ErrorMensajes.PersonajePage);
         //Creare un objeto primero para que represente una partado en el json osea:
         /*
          * info:{

@@ -1,7 +1,6 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Restaurante;
 
 import SerieBobEsponja.BobEsponja.Exception.*;
-import SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje.PersonajeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,11 +28,11 @@ public class RestauranteService {
 
 
     public Map<String, Object> getAll(int page, int size)  {
-        if(page <= 0 ) throw new GetPagePersonajeException(ErrorMensajes.RestaurentePage);
-        if(size <= 0 ) throw  new GetSizePersonajeException(ErrorMensajes.RestaurentePage);
-        Pageable pageable = PageRequest.of(page - 1 , size); // Pongo -1 para que empieze en uno
+        if(page <= 0 ) throw new GetPageException(ErrorMensajes.RestaurentePage);
+        if(size <= 0 ) throw  new GetSizeException(ErrorMensajes.RestauranteSize);
+        Pageable pageable = PageRequest.of(page - 1 , size); // Pongo -1 poruqe le indicaremos que sea la pag 0  para que empieze en uno
         Page<RestauranteEntity> resultado = RestauranteDao.findAllByOrderByIdAsc(pageable);
-
+        if (resultado.isEmpty()) throw new GetPageException(ErrorMensajes.RestaurentePage);
         Map<String, Object> info = new LinkedHashMap<>();
         info.put("paginaActual", resultado.getNumber() + 1)  ;     // pagina actual
         info.put("totalPaginas", resultado.getTotalPages()); // total paginas
@@ -52,7 +51,7 @@ public class RestauranteService {
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
 
         return RestauranteDao.findById(id)
-                .orElseThrow(() -> new PersonajeNotFoundException(ErrorMensajes.RestauranteId));
+                .orElseThrow(() -> new ElementNotFoundException(ErrorMensajes.RestauranteId));
     }
     public void deleteId(Long id ){
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
