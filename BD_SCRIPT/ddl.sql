@@ -13,6 +13,7 @@ CREATE TABLE personajes (
     especie     VARCHAR(100) NOT NULL,
     direccion   VARCHAR(150),
     ocupacion   VARCHAR(100),
+    edad MEDIUMINT, 
     CONSTRAINT pk_personaje PRIMARY KEY(id)
 );
 
@@ -80,8 +81,10 @@ CREATE TABLE pedidos (
     CONSTRAINT fk_pedido_personaje
         FOREIGN KEY (id_personaje)
         REFERENCES personajes(id)
+        ON DELETE CASCADE 
         ,
     CONSTRAINT fk_pedido_producto
         FOREIGN KEY (id_producto)
         REFERENCES productos(id)
+        ON DELETE CASCADE 
 );

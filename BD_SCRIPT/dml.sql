@@ -5,14 +5,14 @@ USE fondodebikini;
 -- -----------------------------------------------
 -- Datos: personaje
 -- -----------------------------------------------
-INSERT INTO personajes (nombre, especie, direccion, ocupacion) VALUES
-('Bob Esponja',   'Esponja',  'Piña, 124 Calle Concha',        'Cocinero'),
-('Patricio Star', 'Estrella', 'Roca, 120 Calle Concha',         'Desempleado'),
-('Calamardo',     'Pulpo',    'Isla de Pascua, 122 C. Concha',  'Cajero'),
-('Sandy Mejillas','Ardilla',  'Cúpula submarina, Bikini',       'Científica'),
-('El Cangrejo',   'Cangrejo', 'Ancora, Calle Ancla 1',          'Empresario'),
-('Plankton',      'Plancton', 'Cubo de Basura, Calle Basura 1', 'Villano'),
-('Gary',          'Caracol',  'Piña, 124 Calle Concha',         'Mascota');
+INSERT INTO personajes (nombre, especie, direccion, ocupacion,edad) VALUES
+('Bob Esponja',   'Esponja',  'Piña, 124 Calle Concha',        'Cocinero',20),
+('Patricio Star', 'Estrella', 'Roca, 120 Calle Concha',         'Desempleado',30),
+('Calamardo',     'Pulpo',    'Isla de Pascua, 122 C. Concha',  'Cajero',110),
+('Sandy Mejillas','Ardilla',  'Cúpula submarina, Bikini',       'Científica',200),
+('El Cangrejo',   'Cangrejo', 'Ancora, Calle Ancla 1',          'Empresario',500),
+('Plankton',      'Plancton', 'Cubo de Basura, Calle Basura 1', 'Villano',320),
+('Gary',          'Caracol',  'Piña, 124 Calle Concha',         'Mascota',1);
 
 -- -----------------------------------------------
 -- Datos: restaurante
