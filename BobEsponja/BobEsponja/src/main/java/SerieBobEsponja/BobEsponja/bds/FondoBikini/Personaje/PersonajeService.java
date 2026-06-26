@@ -28,7 +28,7 @@ public void deleteId(Long id ){
 }
 //Hare pequeñas comprovaciones
 public PersonajeEntity add(PersonajeEntity p ){
-    if(p.getNombre().length() < 4 || p.getEspecie().length() < 2  ) throw new AddPersonajeException(ErrorMensajes.PersonajeAddException);
+    if(p.getNombre().length() < 4 || p.getEspecie().length() < 2  ) throw new AddException(ErrorMensajes.PersonajeAddException);
 
 return repo.save(p);
 }
@@ -64,7 +64,7 @@ return repo.save(p);
 //SE DEBE DE REEMPLAZAR POR COMPLETO
     public PersonajeEntity update(Long id, PersonajeEntity p) {
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
-        if(repo.findById(id).isEmpty()) throw new AddPersonajeException(ErrorMensajes.PersonajeNotFound);
+        if(repo.findById(id).isEmpty()) throw new AddException(ErrorMensajes.PersonajeNotFound);
         p.setId(id);        //  Vamos a reemplazar todos los cambios del personaje actual
         return repo.save(p); // Hara  UPDATE porque detectara el objeto que tendra una id (Si tiene id actualizara)
     }

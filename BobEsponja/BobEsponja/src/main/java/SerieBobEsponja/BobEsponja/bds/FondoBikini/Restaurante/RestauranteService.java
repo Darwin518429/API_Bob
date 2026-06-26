@@ -59,14 +59,14 @@ public class RestauranteService {
     }
     //Hare pequeñas comprovaciones
     public RestauranteEntity add(RestauranteEntity p ){
-        if(p.getNombre().length() < 4 ) throw new AddPersonajeException(ErrorMensajes.RestauranteAdd);
+        if(p.getNombre().length() < 4 ) throw new AddException(ErrorMensajes.RestauranteAdd);
 
         return RestauranteDao.save(p);
     }
 
     public RestauranteEntity update(Long id, RestauranteEntity p) {
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
-        if(RestauranteDao.findById(id).isEmpty()) throw new AddPersonajeException(ErrorMensajes.RestauranteId);
+        if(RestauranteDao.findById(id).isEmpty()) throw new AddException(ErrorMensajes.RestauranteId);
         p.setId(id);        //  Vamos a reemplazar todos los cambios del personaje actual
         return RestauranteDao.save(p); // Hara  UPDATE porque detectara el objeto que tendra una id (Si tiene id actualizara)
     }

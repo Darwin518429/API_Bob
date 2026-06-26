@@ -16,8 +16,8 @@ public class GlobalExceptionHandler {
                 .body(e.getMessage()); // Mensaje del error
     }
 
-    @ExceptionHandler(AddPersonajeException.class)
-    public ResponseEntity<String> handleAddPersonajeException (AddPersonajeException e ) {
+    @ExceptionHandler(AddException.class)
+    public ResponseEntity<String> handleAddPersonajeException (AddException e ) {
         return ResponseEntity.
                 status(HttpStatus.NOT_FOUND) //Codigo http de  error quer mandara
                 .body(e.getMessage()); // Mensaje del error
@@ -52,14 +52,22 @@ public class GlobalExceptionHandler {
                 .body(e.getMessage()); // Mensaje del error
     }
 
-//   Si no encunetra un ocntroller ocn el nombre lanzara un mensaje de error
+//   Si no encunetra un controller ocn el nombre lanzara un mensaje de error
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<String> handleNotFound(NoResourceFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("La ruta solicitada no existe");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorMensajes.RutaGeneral);
     }
 
     @ExceptionHandler(RequestException.class)
     public ResponseEntity<String> handleRequestException(RequestException e ) {
+        return ResponseEntity.
+                status(HttpStatus.NOT_FOUND) //Codigo http de  error quer mandara
+                .body(e.getMessage()); // Mensaje del error
+    }
+
+
+    @ExceptionHandler(PrecioInvalidException.class)
+    public ResponseEntity<String> handleRequestException(PrecioInvalidException e ) {
         return ResponseEntity.
                 status(HttpStatus.NOT_FOUND) //Codigo http de  error quer mandara
                 .body(e.getMessage()); // Mensaje del error

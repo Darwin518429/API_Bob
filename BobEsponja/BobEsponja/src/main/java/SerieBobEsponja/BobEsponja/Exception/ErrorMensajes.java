@@ -24,6 +24,17 @@ public class ErrorMensajes {
     final public static String ProductoAdd = "NO se ha podido añadir el retaurante";
     final public static String ProductoSize = "Tamaño no valido";
 
+    //Mensahes Pedidos
+
+    final public static String PedidoPage = "NO se encuentra pagina";
+    final public static String PedidoId = "Pedodp no encontrado";
+    final public static String PeidoAdd = "NO se ha podido añadir el pedido";
+    final public static String PedidoSize = "Error no se puede size ";
+    final public static String PedidoPrecio = "Error con el total";
+
     //MENSAJES  error peticion http
     final public static String RequestException = "Error Demasiadas excepciones";
+
+    //Error general (Que falal al escribir)
+    final public static String RutaGeneral = "Error no se ha encontrado la ruta ";
 }

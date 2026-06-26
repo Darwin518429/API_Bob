@@ -1,7 +1,6 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Producto;
 
 import SerieBobEsponja.BobEsponja.Exception.*;
-import SerieBobEsponja.BobEsponja.bds.FondoBikini.Restaurante.RestauranteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -57,14 +56,14 @@ private ProductoRespository dao;
     }
     //Hare pequeñas comprovaciones
     public ProductoEntity add(ProductoEntity p ){
-        if(p.getNombre().length() < 4 ) throw new AddPersonajeException(ErrorMensajes.RestauranteAdd);
+        if(p.getNombre().length() < 4 ) throw new AddException(ErrorMensajes.RestauranteAdd);
 
         return dao.save(p);
     }
 
     public ProductoEntity update(Long id, ProductoEntity p) {
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
-        if(dao.findById(id).isEmpty()) throw new AddPersonajeException(ErrorMensajes.RestauranteId);
+        if(dao.findById(id).isEmpty()) throw new AddException(ErrorMensajes.RestauranteId);
         p.setId(id);        //  Vamos a reemplazar todos los cambios del personaje actual
         return dao.save(p); // Hara  UPDATE porque detectara el objeto que tendra una id (Si tiene id actualizara)
     }
