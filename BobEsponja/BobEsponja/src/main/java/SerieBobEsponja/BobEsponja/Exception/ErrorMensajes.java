@@ -32,6 +32,16 @@ public class ErrorMensajes {
     final public static String PedidoSize = "Error no se puede size ";
     final public static String PedidoPrecio = "Error con el total";
 
+
+    //Mensajes Ingredientes
+    final public static String IngredientePage = "NO se encuentra pagina";
+    final public static String IngredienteId = "Ingrediente no encontrado";
+    final public static String IngredienteAdd = "NO se ha podido añadir el ingrediente";
+    final public static String IngredienteSize = "Error no se puede size ";
+    final public static String IngredientePrecio = "Error con el total";
+
+
+
     //MENSAJES  error peticion http
     final public static String RequestException = "Error Demasiadas excepciones";
 

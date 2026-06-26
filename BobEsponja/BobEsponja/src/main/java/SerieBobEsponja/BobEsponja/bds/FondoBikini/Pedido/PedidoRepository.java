@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface PedidoRepository  extends JpaRepository<PedidoEntity, Long> {
     Page<PedidoEntity> findAllByOrderByIdAsc(Pageable pageable);
-
-    @Query("SELECT p  FROM PedidoEntity p WHERE p.total >= ?1 ")
+//MIRAR
+    @Query("SELECT p  FROM PedidoEntity p WHERE p.total >= ?1 ORDER BY p.id ASC ")
     List<PedidoEntity> getPedidomasde(Float precio);
 }

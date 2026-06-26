@@ -42,9 +42,6 @@ public class RESTPersonajesController {
 
        return p;
     }
-    private PersonajeEntity getPersonajeList(Long id ){
-        return service.getId(id);
-    }
 
     @DeleteMapping(ApiRoutes.Personajes + "/{id}")
     public String deletePersonaje(@PathVariable Long id){
