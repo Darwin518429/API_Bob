@@ -18,14 +18,14 @@ import java.util.concurrent.ConcurrentHashMap;
 //CLASSE QUE LIMITE LAS PETICIONES HTTP
 @Component
 public class RateLimitFilter extends OncePerRequestFilter {
-private int limite = 10;
-
+private int capacidad = 10;
+private int minutos = 1;
     private final Map<String, Bucket> buckets = new ConcurrentHashMap<>();
 /*Un Bucket es un contador dque se van gastando con cada petición y que se recargan
  automáticamente con el tiempo.*/
     private Bucket createBucket() {
         return Bucket.builder()
-                .addLimit(Bandwidth.simple(10, Duration.ofMinutes(1))) //10 intentos por 1 min
+                .addLimit(Bandwidth.simple(capacidad, Duration.ofMinutes(minutos))) //10 intentos por 1 min
                 .build();
     }
 
