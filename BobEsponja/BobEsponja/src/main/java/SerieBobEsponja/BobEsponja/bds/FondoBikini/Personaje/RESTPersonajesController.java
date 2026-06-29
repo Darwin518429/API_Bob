@@ -14,11 +14,11 @@ import java.util.*;
 public class RESTPersonajesController {
     @Autowired // Me crea el objeto sin tener que hace un constructor
     PersonajeService service;
-@GetMapping("/")
+/*@GetMapping("/")
     public String  prueba (){
         return "Hola mundo!";
     }
-
+*/
     //Obtener  los personajes
     @GetMapping(ApiRoutes.Personajes)
     public Map<String, Object> getAll(

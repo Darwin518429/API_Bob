@@ -1,5 +1,50 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api </title>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
 <body>
-<p th:text=${mensaje}></p>
+    <header>
+        <h1>Api  Fondo de bikini</h1>
+    <nav class="menu">
+        <ul>
+            <li><a href="">Documentacion</a></li>
+            <li><a th:href="@{${personajes}}" >Personajes</a></li>
+            <li><a href="" >Pedido</a></li>
+            <li><a href="" >Ingrediente</a></li>
+            <li><a href="" >Producto</a></li>
+            <li><a href="" >Restaurante</a></li>
+        </ul>
+    </nav>
+    </header>
+<main>
+<section>
+      <h2>Sobre esta API</h2>
+    <p>
+        Esta API REST permite gestionar la información de Fondo de Bikini: personajes,
+        restaurantes, productos y pedidos. Está construida con Spring Boot y sigue el
+        patrón de arquitectura en capas (Controller, Service, Repository), comunicándose
+        con una base de datos MySQL a través de JPA e Hibernate.
+    </p>
+    <p>
+        Permite realizar las operaciones básicas de creación, lectura, actualización
+        y borrado (CRUD) sobre cada entidad, además de manejo  de errores y limitación.
+    </p>
+</section>
+</main>
+<figure id="fotobob">
+<img  th:src="@{/images/momazo.jpg}">
+   <figcaption>Patricio con el Bob</figcaption>
+   </figure>
 </body>
 </html>
+<!-- Añadir texto Ejemplo  <p th:text=${mensaje}></p>  -->
+ <!-- 
+@{} -- Para urls o enlacees como hfre,src...
+${} sacar  valores de la variables
+ <li><a th:href="@{${personajes}}" >Personajes</a></li>
+   -->
