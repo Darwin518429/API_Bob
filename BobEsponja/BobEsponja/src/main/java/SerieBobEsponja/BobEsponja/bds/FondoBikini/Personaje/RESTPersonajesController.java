@@ -35,7 +35,7 @@ public class RESTPersonajesController {
         return service.getPersonajeOcupacion(Ocupacion);
     };
     //Obtener por id
-   @GetMapping( ApiRoutes.Personajes + "/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
+   @GetMapping( ApiRoutes.getPersonaje) //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
     public PersonajeEntity getPersonaje(@PathVariable Long id ){
 
         PersonajeEntity p = service.getId(id);
@@ -43,7 +43,7 @@ public class RESTPersonajesController {
        return p;
     }
 
-    @DeleteMapping(ApiRoutes.Personajes + "/{id}")
+    @DeleteMapping(ApiRoutes.getPersonaje)
     public String deletePersonaje(@PathVariable Long id){
        service.deleteId(id);
         if(service.getId(id) == null) return "Elimininado correctmente";
@@ -58,7 +58,7 @@ public class RESTPersonajesController {
     }
 
 //Actualizar
-    @PutMapping( ApiRoutes.Personajes + "/{id}")
+    @PutMapping( ApiRoutes.getPersonaje)
     public PersonajeEntity update(@PathVariable Long id, @RequestBody PersonajeEntity p) {
         return service.update(id, p);
     }

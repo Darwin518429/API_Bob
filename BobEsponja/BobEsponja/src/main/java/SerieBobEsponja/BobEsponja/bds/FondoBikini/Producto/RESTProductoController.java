@@ -30,7 +30,7 @@ public class RESTProductoController {
 
     }
 
-    @GetMapping( ApiRoutes.Productos + "/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
+    @GetMapping(ApiRoutes.getProductos) //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
     public ProductoEntity getProductod(@PathVariable Long id ){
 
         ProductoEntity p = service.getId(id);
@@ -38,7 +38,7 @@ public class RESTProductoController {
         return p;
     }
 
-    @DeleteMapping(ApiRoutes.Productos + "/{id}")
+    @DeleteMapping(ApiRoutes.getProductos)
     public String deleteProductos(@PathVariable Long id){
         service.deleteId(id);
         if(service.getId(id) == null) return "Elimininado correctmente";
@@ -53,7 +53,7 @@ public class RESTProductoController {
     }
 
     //Actualizar
-    @PutMapping( ApiRoutes.Productos + "/{id}")
+    @PutMapping(ApiRoutes.getProductos)
     public ProductoEntity update(@PathVariable Long id, @RequestBody ProductoEntity p) {
         return service.update(id, p);
     }

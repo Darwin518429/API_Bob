@@ -28,7 +28,7 @@ public class RESTPedidoController {
     }
 
     //Obtener por id
-    @GetMapping( ApiRoutes.Pedidos + "/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
+    @GetMapping(ApiRoutes.getPedidos) //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
     public PedidoEntity getPersonaje(@PathVariable Long id ){
 
         PedidoEntity p = service.getId(id);
@@ -37,7 +37,7 @@ public class RESTPedidoController {
     }
 
 
-    @DeleteMapping(ApiRoutes.Pedidos + "/{id}")
+    @DeleteMapping(ApiRoutes.getPedidos)
     public String deletePersonaje(@PathVariable Long id){
         service.deleteId(id);
         if(service.getId(id) == null) return "Elimininado correctmente";
@@ -52,7 +52,7 @@ public class RESTPedidoController {
     }
 
     //Actualizar
-    @PutMapping( ApiRoutes.Pedidos + "/{id}")
+    @PutMapping( ApiRoutes.getPedidos)
     public PedidoEntity update(@PathVariable Long id, @RequestBody PedidoEntity p) {
         return service.update(id, p);
     }

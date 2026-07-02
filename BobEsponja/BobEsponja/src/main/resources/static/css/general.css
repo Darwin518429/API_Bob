@@ -252,3 +252,18 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+/* SPAN*/
+.marcado{
+color: #74b9ff; /* Un azul clarito */
+  font-weight: bold;
+}
+
+.bloques{
+background-color: #0f172a; /* Un azul marino casi negro, muy elegante */
+  border-left: 5px solid #06b6d4; /* Una línea lateral llamativa */
+  padding: 20px;
+  border-radius: 10px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  color: #f8fafc; /* Texto base blanco brillante */
+}

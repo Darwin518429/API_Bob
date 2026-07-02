@@ -31,7 +31,7 @@ IngredienteService service;
     }
 
     //Obtener por id
-    @GetMapping( ApiRoutes.Ingrediente + "/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
+    @GetMapping( ApiRoutes.getIngrediente) //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
     public IngredienteEntity getPersonaje(@PathVariable Long id ){
 
         IngredienteEntity p = service.getId(id);
@@ -39,7 +39,7 @@ IngredienteService service;
         return p;
     }
 
-    @DeleteMapping(ApiRoutes.Ingrediente + "/{id}")
+    @DeleteMapping(ApiRoutes.getIngrediente)
     public String deletePersonaje(@PathVariable Long id){
         service.deleteId(id);
         if(service.getId(id) == null) return "Elimininado correctmente";
@@ -54,7 +54,7 @@ IngredienteService service;
     }
 
     //Actualizar
-    @PutMapping( ApiRoutes.Ingrediente + "/{id}")
+    @PutMapping( ApiRoutes.getIngrediente)
     public IngredienteEntity update(@PathVariable Long id, @RequestBody IngredienteEntity p) {
         return service.update(id, p);
     }

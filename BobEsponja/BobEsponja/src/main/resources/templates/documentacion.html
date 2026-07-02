@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api </title>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+   <!-- <link rel="stylesheet" th:href="@{/css/index.css}"> -->
+</head>
+<body>
+<header>
+    <h1>Api  Fondo de bikini</h1>
+    <nav class="menu">
+        <ul>
+            <li><a th:href="@{${doc}}">Documentacion</a></li>
+            <li><a href="/" >Pagina principal</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>Documentacion</h2>
+        <p>
+          Casi todas las entidades tienen las mismas operaciones C.R.U.D osea se puede tanto eliminar,añadir
+            ,actualizar y leer(acceder) hay otras consultas "especiales"q que se pueden hacer en algunas entidades
+        </p>
+       <p>
+           Normalmente consisten de esta sintaxis: <span class="marcado" th:text=${api}> </span>
+       </p>
+    </section>
+    <section>
+        <h2>Personajes</h2>
+        Aqui contiene la ruta... donde se podra hacer las funciones crud como:
+        <ul>
+            <li>Eliminar: </li>
+        </ul>
+
+    </section>
+</main>
+</body>
+</html>

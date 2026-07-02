@@ -30,7 +30,7 @@ RestauranteService service;
     }
 
     //Obtener por id
-    @GetMapping( ApiRoutes.Restaurantes + "/{id}") //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
+    @GetMapping(ApiRoutes.getRestaurantes) //COn @PathVariable agarramos el id del parametro para darselo a @Getmapping
     public RestauranteEntity getRestaurante(@PathVariable Long id ){
 
         RestauranteEntity p = service.getId(id);
@@ -38,7 +38,7 @@ RestauranteService service;
         return p;
     }
 
-    @DeleteMapping(ApiRoutes.Restaurantes + "/{id}")
+    @DeleteMapping(ApiRoutes.getRestaurantes)
     public String deleteRestaurante(@PathVariable Long id){
         service.deleteId(id);
         if(service.getId(id) == null) return "Elimininado correctmente";
@@ -53,7 +53,7 @@ RestauranteService service;
     }
 
     //Actualizar
-    @PutMapping( ApiRoutes.Restaurantes + "/{id}")
+    @PutMapping( ApiRoutes.getRestaurantes)
     public RestauranteEntity update(@PathVariable Long id, @RequestBody RestauranteEntity p) {
         return service.update(id,p);
     }
