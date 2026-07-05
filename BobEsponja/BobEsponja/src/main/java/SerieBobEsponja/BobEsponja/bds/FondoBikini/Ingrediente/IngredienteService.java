@@ -2,6 +2,7 @@ package SerieBobEsponja.BobEsponja.bds.FondoBikini.Ingrediente;
 
 import SerieBobEsponja.BobEsponja.Exception.*;
 import SerieBobEsponja.BobEsponja.bds.FondoBikini.Pedido.PedidoEntity;
+import SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje.PersonajeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,12 +11,15 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 @Service
 public class IngredienteService {
     @Autowired
     IngredienteRespository dao;
-
+    public List<IngredienteEntity> getAllList(){
+        return dao.findAll();
+    }
     public IngredienteEntity getId(Long id ){
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
 
@@ -29,7 +33,6 @@ public class IngredienteService {
     //Hare pequeñas comprovaciones
     public IngredienteEntity add(IngredienteEntity p ){
         if(p == null ) throw new AddException(ErrorMensajes.IngredienteAdd);
-
         return dao.save(p);
     }
 
@@ -49,7 +52,7 @@ public class IngredienteService {
         info.put("paginaActual", resultado.getNumber() + 1)  ;     // pagina actual
         info.put("totalPaginas", resultado.getTotalPages()); // total paginas
         info.put("totalElementos", resultado.getTotalElements()); // total registros
-
+        
         Map<String, Object> response = new LinkedHashMap<>();
 
         response.put("Info",info);

@@ -1,6 +1,7 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Pedido;
 
 import SerieBobEsponja.BobEsponja.Exception.*;
+import SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje.PersonajeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +17,9 @@ public class PedidoService {
 
     @Autowired
   private   PedidoRepository dao;
-
+    public List<PedidoEntity>getAllList(){
+        return dao.findAll();
+    }
     public List<PedidoEntity> getpedidosmasde(Float precio){
     if(precio < 0 ) throw  new PrecioInvalidException(ErrorMensajes.PedidoPrecio);
     return dao.getPedidomasde(precio);

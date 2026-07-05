@@ -1,6 +1,7 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Producto;
 
 import SerieBobEsponja.BobEsponja.Exception.*;
+import SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje.PersonajeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +16,9 @@ import java.util.Map;
 public class ProductoService {
 @Autowired
 private ProductoRespository dao;
+    public List<ProductoEntity>getAllList(){
+        return dao.findAll();
+    }
     //Consultas predeterminadas
    public List<ProductoEntity> getNombreRestaurante(String nom){
         if(nom.isBlank()) throw new  StringInvalidException("Error");

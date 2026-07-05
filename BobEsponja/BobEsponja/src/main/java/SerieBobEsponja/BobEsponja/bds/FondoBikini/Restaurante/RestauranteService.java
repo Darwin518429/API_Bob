@@ -1,6 +1,7 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Restaurante;
 
 import SerieBobEsponja.BobEsponja.Exception.*;
+import SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje.PersonajeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,6 +12,10 @@ import java.util.*;
 public class RestauranteService {
     @Autowired
     private RestauranteRepository RestauranteDao;
+
+    public List<RestauranteEntity>getAllList(){
+        return RestauranteDao.findAll();
+    }
 
     public List<Map<String, Object>> getPropietarios() {
         List<Object[]> resultado = RestauranteDao.getPropietariosRestaurantes();

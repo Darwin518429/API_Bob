@@ -33,7 +33,7 @@
 
     </section>
     <section>
-        <h2>Personajes</h2>
+        <h2><a th:href="@{${personajes}}">Personajes</a></h2>
         <p>Aqui contiene la ruta: <span class="marcado" th:text=${personaje_id}></span> donde se podra hacer las funciones crud como:<p/>
         <ul>
             <li>GET(Obtener)</li>
@@ -45,6 +45,7 @@
         <table>
             <thead>
             <tr>
+                <th>id</th>
                 <th>Nombre</th>
                 <th>Especie</th>
                 <th>Direccion</th>
@@ -52,14 +53,45 @@
                 <th>edad</th>
             </tr>
             </thead>
+            <!--"elemento"  es un nombre que nos referimos para poder utilizarlo en caso que sea un objeto -->
             <tr th:each="elemento : ${personaje_entity}">
+                <td th:text="${elemento.id}"></td>
                 <td th:text="${elemento.nombre}"></td>
                 <td th:text="${elemento.especie}"></td>
                 <td th:text="${elemento.direccion}"></td>
                 <td th:text="${elemento.ocupacion}"></td>
                 <td th:text="${elemento.edad}"></td>
             </tr>
+        </table>
+    </section>
 
+
+    <section>
+        <h2><a th:href="@{${producto}}">Productos</a></h2>
+        <p>Aqui contiene la ruta: <span class="marcado" th:text=${producto_id}></span> donde se podra hacer las funciones crud como:<p/>
+        <ul>
+            <li>GET(Obtener)</li>
+            <li>POST(Añadir)</li>
+            <li>PUT(Actualizar)</li>
+            <li>DELETE(eliminar)</li>
+        </ul>
+        <h2> Producto Tabla</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Id_Restaurante</th>
+            </tr>
+            </thead>
+            <!--"elemento"  es un nombre que nos referimos para poder utilizarlo en caso que sea un objeto -->
+            <tr th:each="elemento: ${producto_entity}">
+                <td th:text="${elemento.id}"></td>
+                <td th:text="${elemento.nombre}"></td>
+                <td th:text="${elemento.precio}"></td>
+                <td th:text="${elemento.id_restaurante}"></td>
+            </tr>
         </table>
     </section>
 </main>
