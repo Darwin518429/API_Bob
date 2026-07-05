@@ -15,17 +15,26 @@ public class PedidoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected  Long  id;
+    protected Long id_producto;
     protected Long id_personaje;
     protected int cantidad;
     protected String fecha;
     protected int total;
     public PedidoEntity(){}
-    public PedidoEntity(Long id, Long id_personaje, int cantidad, String fecha, int total) {
+    public PedidoEntity(Long id,Long id_producto, Long id_personaje, int cantidad, String fecha, int total) {
         this.id = id;
         this.id_personaje = id_personaje;
         this.cantidad = cantidad;
         this.fecha = fecha;
         this.total = total;
+    }
+
+    public Long getId_producto() {
+        return id_producto;
+    }
+
+    public void setId_producto(Long id_producto) {
+        this.id_producto = id_producto;
     }
 
     public Long getId() {
