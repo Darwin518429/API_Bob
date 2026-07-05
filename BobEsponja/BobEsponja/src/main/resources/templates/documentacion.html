@@ -27,14 +27,40 @@
        <p>
            Normalmente consisten de esta sintaxis: <span class="marcado" th:text=${api}> </span>
        </p>
+        <h3>Navegar paginas </h3>
+        <p>Todos los elementos estan separados por diferentes paginas osea por cada JSON hay 5 elementos, para
+        navegar se utiliza esta sintaxis: <span class="marcado" th:text=${pag}></span> </p>
+
     </section>
     <section>
         <h2>Personajes</h2>
-        Aqui contiene la ruta... donde se podra hacer las funciones crud como:
+        <p>Aqui contiene la ruta: <span class="marcado" th:text=${personaje_id}></span> donde se podra hacer las funciones crud como:<p/>
         <ul>
-            <li>Eliminar: </li>
+            <li>GET(Obtener)</li>
+            <li>POST(Añadir)</li>
+            <li>PUT(Actualizar)</li>
+            <li>DELETE(eliminar)</li>
         </ul>
+        <h2> Personaje Tabla</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Direccion</th>
+                <th>Ocupacion</th>
+                <th>edad</th>
+            </tr>
+            </thead>
+            <tr th:each="elemento : ${personaje_entity}">
+                <td th:text="${elemento.nombre}"></td>
+                <td th:text="${elemento.especie}"></td>
+                <td th:text="${elemento.direccion}"></td>
+                <td th:text="${elemento.ocupacion}"></td>
+                <td th:text="${elemento.edad}"></td>
+            </tr>
 
+        </table>
     </section>
 </main>
 </body>

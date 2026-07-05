@@ -16,6 +16,11 @@ public class PersonajeService {
    /* public List<PersonajeEntity> getAll() {
         return repo.findAll();
     }*/
+
+    public List<PersonajeEntity>getAllList(){
+        return repo.findAll();
+    }
+
 public PersonajeEntity getId(Long id ){
         if(id <= 0 ) throw new IdInvalidException(ErrorMensajes.InvalidId);
 
