@@ -1,5 +1,4 @@
-package SerieBobEsponja.BobEsponja.Config;
-
+package config;
 //import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
