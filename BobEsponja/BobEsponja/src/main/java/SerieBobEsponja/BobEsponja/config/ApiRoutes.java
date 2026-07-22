@@ -1,4 +1,4 @@
-package SerieBobEsponja.BobEsponja.Config;
+package SerieBobEsponja.BobEsponja.config;
 
 public class ApiRoutes {
     //  Definir las rutas en todos las apis rest

@@ -1,4 +1,4 @@
-package SerieBobEsponja.BobEsponja.Config;
+package SerieBobEsponja.BobEsponja.config;
 
 import SerieBobEsponja.BobEsponja.Exception.ErrorMensajes;
 import SerieBobEsponja.BobEsponja.Exception.RequestException;

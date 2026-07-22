@@ -1,18 +1,10 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Ingrediente;
 
-import SerieBobEsponja.BobEsponja.Config.ApiRoutes;
-import SerieBobEsponja.BobEsponja.Config.PagConfig;
-import SerieBobEsponja.BobEsponja.Exception.*;
-import SerieBobEsponja.BobEsponja.bds.FondoBikini.Pedido.PedidoEntity;
-import SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje.PersonajeEntity;
+import SerieBobEsponja.BobEsponja.config.ApiRoutes;
+import SerieBobEsponja.BobEsponja.config.PagConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 @RestController
 public class RESTIngredienteController {

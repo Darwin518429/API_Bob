@@ -1,4 +1,4 @@
-package SerieBobEsponja.BobEsponja.Config;
+package SerieBobEsponja.BobEsponja.config;
 
 public class PagConfig {
 

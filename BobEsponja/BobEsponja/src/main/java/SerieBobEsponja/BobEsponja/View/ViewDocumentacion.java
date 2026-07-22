@@ -1,6 +1,6 @@
 package SerieBobEsponja.BobEsponja.View;
 
-import SerieBobEsponja.BobEsponja.Config.ApiRoutes;
+import SerieBobEsponja.BobEsponja.config.ApiRoutes;
 import SerieBobEsponja.BobEsponja.bds.FondoBikini.Ingrediente.IngredienteService;
 import SerieBobEsponja.BobEsponja.bds.FondoBikini.Pedido.PedidoService;
 import SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje.PersonajeService;

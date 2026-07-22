@@ -1,7 +1,7 @@
 package SerieBobEsponja.BobEsponja.bds.FondoBikini.Personaje;
 
-import SerieBobEsponja.BobEsponja.Config.ApiRoutes;
-import SerieBobEsponja.BobEsponja.Config.PagConfig;
+import SerieBobEsponja.BobEsponja.config.ApiRoutes;
+import SerieBobEsponja.BobEsponja.config.PagConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 // No deajar  hacer esto:

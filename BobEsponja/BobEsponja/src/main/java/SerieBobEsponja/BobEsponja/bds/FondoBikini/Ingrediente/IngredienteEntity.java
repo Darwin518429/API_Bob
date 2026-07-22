@@ -16,7 +16,7 @@ public IngredienteEntity(){}
         this.nombre = nombre;
         this.alergeno = alergeno;
     }
-
+//Los neecsita el springboot lpara obtener los datos los fgetters y setters
     public Long getId() {
         return id;
     }

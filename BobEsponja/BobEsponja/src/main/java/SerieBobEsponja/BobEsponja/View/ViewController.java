@@ -1,11 +1,9 @@
 package SerieBobEsponja.BobEsponja.View;
 
-import SerieBobEsponja.BobEsponja.Config.ApiRoutes;
+import SerieBobEsponja.BobEsponja.config.ApiRoutes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.io.File;
 
 @Controller
 public class ViewController {
