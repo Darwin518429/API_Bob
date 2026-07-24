@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-@Service
+//@Service
 public class testService {
-    @Autowired
+   /* @Autowired
     testRespository dao;
-    public List<testEntity> getAllList(){
+   public List<testEntity> getAllList(){
         return dao.findAll();
     }
 
@@ -23,5 +23,5 @@ public class testService {
       return  dao.findAll();
     }
 
-
+*/
 }

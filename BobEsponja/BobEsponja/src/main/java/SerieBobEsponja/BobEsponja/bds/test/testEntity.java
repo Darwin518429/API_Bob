@@ -2,10 +2,10 @@ package SerieBobEsponja.BobEsponja.bds.test;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "categorias")
+//@Entity
+//@Table(name = "categorias")
 public class testEntity {
-    @Id
+  /*  @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected  Long  id_categoria;
     protected String nombre;
@@ -35,10 +35,10 @@ public testEntity(){}
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return descripcizon;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
+    }*/
 }

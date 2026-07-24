@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-@RestController
+//@RestController
 public class RESTtestController {
-@Autowired
-testService service;
+//@Autowired
+//testService service;
 
 
     //Obtener  los personajes
-    @GetMapping("/test")
-    public List<testEntity>getAll(
+   // @GetMapping("/test")
+  /*  public List<testEntity>getAll(
     ) {
         return service.getAll();
 
     }
-
+*/
 }
